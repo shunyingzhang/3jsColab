@@ -50,7 +50,7 @@ export default function KitchenViewer({ cabinets }: { cabinets: SalesCabinetMode
       const { width, height } = mount.getBoundingClientRect();
       camera.aspect = width / Math.max(height, 1);
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height, false);
+      renderer.setSize(width, height);
     };
     const observer = new ResizeObserver(resize);
     observer.observe(mount);
