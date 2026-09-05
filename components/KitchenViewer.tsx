@@ -80,7 +80,7 @@ export default function KitchenViewer({ cabinets }: { cabinets: SalesCabinetMode
     };
   }, [cabinets]);
 
-  return <div ref={mountRef} className="viewer" aria-label="可旋转的完整柜体外观预览" />;
+  return <div ref={mountRef} className="viewer" aria-label="可旋轉的完整櫃體外觀預覽" />;
 }
 
 function createMesh(part: ScenePart, textures: Map<string, THREE.Texture>) {

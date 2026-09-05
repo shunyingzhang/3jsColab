@@ -2,7 +2,7 @@ import type { SalesCabinetModel, ScenePart } from "@/lib/cabinet/types";
 import type { BenchtopBuildInput } from "@/lib/benchtop/types";
 import { defaultHandleSelection } from "@/lib/rules/handleCatalog";
 
-/** 建立覆蓋同一方向連續地櫃的一字型台面。 */
+/** 建立覆蓋同一方向連續地櫃的一字型檯面。 */
 export function createBenchtop({ id, cabinets, material, parameters }: BenchtopBuildInput): SalesCabinetModel {
   const ordered = [...cabinets].sort((left, right) => (
     (left.placement?.sequence ?? 0) - (right.placement?.sequence ?? 0)
@@ -12,16 +12,16 @@ export function createBenchtop({ id, cabinets, material, parameters }: BenchtopB
   const firstPlacement = first?.placement;
   const lastPlacement = last?.placement;
   if (!first || !last || !firstPlacement || !lastPlacement) {
-    throw new Error("一字型台面至少需要一個有效地櫃。");
+    throw new Error("一字型檯面至少需要一個有效地櫃。");
   }
   if (ordered.some((cabinet) => cabinet.placement?.run !== firstPlacement.run)) {
-    throw new Error("同一段一字型台面只能覆蓋相同方向的地櫃。");
+    throw new Error("同一段一字型檯面只能覆蓋相同方向的地櫃。");
   }
 
   const topElevations = ordered.map((cabinet) => cabinet.position.z + cabinet.size.height);
   const topElevation = topElevations[0];
   if (topElevations.some((value) => Math.abs(value - topElevation) > 0.01)) {
-    throw new Error("同一段台面覆蓋的地櫃頂面高度必須一致。");
+    throw new Error("同一段檯面覆蓋的地櫃頂面高度必須一致。");
   }
 
   const directionLength = Math.hypot(
@@ -96,7 +96,7 @@ export function createBenchtop({ id, cabinets, material, parameters }: BenchtopB
   return {
     instanceId: id,
     modelCode: "benchtop_1",
-    modelName: "一字型台面",
+    modelName: "一字型檯面",
     kind: "benchtop",
     layoutGroup: "base",
     size: { width, depth: totalDepth, height: parameters.thickness },
@@ -117,7 +117,7 @@ export function createBenchtop({ id, cabinets, material, parameters }: BenchtopB
       p1,
       p2,
     },
-    /** CAD 以被覆蓋地櫃的原始端點定位；台面延伸量另由 overhang 表示。 */
+    /** CAD 以被覆蓋地櫃的原始端點定位；檯面延伸量另由 overhang 表示。 */
     cadPlacement: {
       run: firstPlacement.run,
       runIndex: firstPlacement.runIndex,

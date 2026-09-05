@@ -373,7 +373,7 @@ function buildApplianceTallCabinet(request: CabinetRequest) {
 const definitions: Record<CabinetModelCode, CabinetDefinition> = {
   "benchtop_1": {
     modelCode: "benchtop_1",
-    name: "一字型台面",
+    name: "一字型檯面",
     kind: "benchtop",
     layoutGroup: "base",
     menuCategories: [],

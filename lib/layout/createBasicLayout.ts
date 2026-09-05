@@ -45,7 +45,7 @@ export function getModelDefaults(modelCode: CabinetModelCode) {
   };
 }
 
-/** 分享版基础布局：X排从右向左，再由转角沿Y方向从后向前。 */
+/** 分享版基礎布局：X排從右向左，再由轉角沿Y方向從後向前。 */
 export function createBasicLayout(settings: BasicLayoutSettings): SalesCabinetModel[] {
   const defaults = getModelDefaults(settings.modelCode);
   const layoutGroup: CabinetLayoutGroup = defaults.option?.layoutGroup ?? "base";

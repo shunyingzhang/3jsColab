@@ -16,7 +16,7 @@ import {
   type HandleSelection,
 } from "@/lib/rules/handleCatalog";
 
-const fallbackMaterial: MaterialSelection = { file: "", name: "无贴图", textureUrl: "" };
+const fallbackMaterial: MaterialSelection = { file: "", name: "無貼圖", textureUrl: "" };
 const defaultBenchtop: BenchtopParameters = {
   thickness: 36,
   frontOverhang: 40,
@@ -111,10 +111,10 @@ export default function BasicKitchenDemo({ basePath, materials, benchtopMaterial
     <main className="app-shell">
       <KitchenViewer cabinets={displayModels} />
       <aside className="panel">
-        <h1>3jsColab 外观核心</h1>
-        <p>完整柜型、门板色、把手和台面；不包含文字解析、AI或CAD输出。</p>
+        <h1>3jsColab 外觀核心</h1>
+        <p>完整櫃型、門板色、把手和檯面。</p>
 
-        <Field label="柜型">
+        <Field label="櫃型">
           <select value={modelCode} onChange={(event) => changeModel(event.target.value as CabinetModelCode)}>
             {cabinetOptions.map((option) => (
               <option key={`${option.modelCode}-${option.name}`} value={option.modelCode}>{option.name}</option>
@@ -122,25 +122,25 @@ export default function BasicKitchenDemo({ basePath, materials, benchtopMaterial
           </select>
         </Field>
         <div className="two-columns">
-          <NumberField label="X数量" value={xCount} min={0} max={8} onChange={setXCount} />
-          <NumberField label="Y数量" value={yCount} min={0} max={8} onChange={setYCount} />
-          <NumberField label="宽度 mm" value={width} min={18} max={2400} step={10} onChange={setWidth} />
+          <NumberField label="X數量" value={xCount} min={0} max={8} onChange={setXCount} />
+          <NumberField label="Y數量" value={yCount} min={0} max={8} onChange={setYCount} />
+          <NumberField label="寬度 mm" value={width} min={18} max={2400} step={10} onChange={setWidth} />
           <NumberField label="高度 mm" value={height} min={100} max={3000} step={10} onChange={setHeight} />
           <NumberField label="深度 mm" value={depth} min={50} max={1200} step={10} onChange={setDepth} />
-          <NumberField label="离地 mm" value={elevation} min={0} max={2500} step={10} onChange={setElevation} />
+          <NumberField label="離地 mm" value={elevation} min={0} max={2500} step={10} onChange={setElevation} />
         </div>
 
-        <Field label="门片数量">
+        <Field label="門片數量">
           <select value={doorCount} onChange={(event) => setDoorCount(Number(event.target.value) as 0 | 1 | 2)}>
-            <option value={0}>无</option><option value={1}>一片</option><option value={2}>二片</option>
+            <option value={0}>無</option><option value={1}>一片</option><option value={2}>二片</option>
           </select>
         </Field>
-        <NumberField label="活动层板数量" value={adjustableShelfCount} min={0} max={8} onChange={setAdjustableShelfCount} />
+        <NumberField label="活動層板數量" value={adjustableShelfCount} min={0} max={8} onChange={setAdjustableShelfCount} />
 
-        <MaterialPicker label="门板颜色" materials={materials} selected={doorMaterialFile} onSelect={setDoorMaterialFile} />
-        <MaterialPicker label="柜体颜色" materials={materials} selected={carcassMaterialFile} onSelect={setCarcassMaterialFile} />
+        <MaterialPicker label="門板顏色" materials={materials} selected={doorMaterialFile} onSelect={setDoorMaterialFile} />
+        <MaterialPicker label="櫃體顏色" materials={materials} selected={carcassMaterialFile} onSelect={setCarcassMaterialFile} />
 
-        <Field label="把手类别">
+        <Field label="把手類別">
           <select value={handle.category} onChange={(event) => updateHandleCategory(event.target.value as HandleCategory)}>
             {handleCategories.map((category) => <option key={category}>{category}</option>)}
           </select>
@@ -172,19 +172,19 @@ export default function BasicKitchenDemo({ basePath, materials, benchtopMaterial
         </div>
 
         <section className="section">
-          <label className="checkbox"><input type="checkbox" checked={benchtopEnabled} onChange={(event) => setBenchtopEnabled(event.target.checked)} />显示一字型台面</label>
-          <MaterialPicker label="台面颜色" materials={benchtopMaterials} selected={benchtopMaterialFile} onSelect={setBenchtopMaterialFile} />
+          <label className="checkbox"><input type="checkbox" checked={benchtopEnabled} onChange={(event) => setBenchtopEnabled(event.target.checked)} />顯示一字型檯面</label>
+          <MaterialPicker label="檯面顏色" materials={benchtopMaterials} selected={benchtopMaterialFile} onSelect={setBenchtopMaterialFile} />
           <div className="two-columns">
             <NumberField label="厚度 mm" value={benchtopParameters.thickness} min={10} max={100} onChange={(value) => setBenchtopParameters((current) => ({ ...current, thickness: value }))} />
             <NumberField label="前突出 mm" value={benchtopParameters.frontOverhang} min={0} max={150} onChange={(value) => setBenchtopParameters((current) => ({ ...current, frontOverhang: value }))} />
           </div>
-          <label className="checkbox"><input type="checkbox" checked={benchtopParameters.backsplashEnabled} onChange={(event) => setBenchtopParameters((current) => ({ ...current, backsplashEnabled: event.target.checked }))} />显示后挡水</label>
+          <label className="checkbox"><input type="checkbox" checked={benchtopParameters.backsplashEnabled} onChange={(event) => setBenchtopParameters((current) => ({ ...current, backsplashEnabled: event.target.checked }))} />顯示後擋水</label>
         </section>
 
         <div className="summary">
-          当前：{selectedOption?.name}<br />
-          柜体：{cabinets.length} 个<br />
-          坐标：X左右、Y前后、Z高度
+          目前：{selectedOption?.name}<br />
+          櫃體：{cabinets.length} 個<br />
+          座標：X左右、Y前後、Z高度
         </div>
       </aside>
     </main>
