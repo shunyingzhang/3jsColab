@@ -13,13 +13,6 @@
 - 樂天石 PM832檯面、突出量、厚度與後擋水。
 - 櫃型、X/Y數量、寬高深、離地高度、門片數量、層板數量、顏色和把手的簡單調整。
 
-## 未包含內容
-
-- OpenAI、Gemini及其他AI Provider。
-- 本地文字解析、AI布局解析、對話與Agent工具。
-- AutoCAD JSON輸出和生產資料。
-- 複雜房間、門窗及完整銷售配置介面。
-- `.env.local`、API Key、原專案Git歷史和`node_modules`。
 
 ## 執行
 
