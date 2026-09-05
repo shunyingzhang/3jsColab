@@ -10,14 +10,20 @@ body { margin: 0; }
 button, input, select { font: inherit; }
 
 .app-shell {
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 390px;
+  overflow: hidden;
 }
 
-.viewer { min-height: 100vh; }
+.viewer {
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
 
 .panel {
+  height: 100vh;
   padding: 24px;
   background: #fff;
   border-left: 1px solid #d9dee2;
@@ -55,7 +61,17 @@ button, input, select { font: inherit; }
 .summary { margin-top: 24px; padding: 12px; border-radius: 8px; background: #f3f5f6; font-size: 13px; line-height: 1.6; }
 
 @media (max-width: 800px) {
-  .app-shell { grid-template-columns: 1fr; }
-  .viewer { min-height: 65vh; }
-  .panel { border-left: 0; border-top: 1px solid #d9dee2; }
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+  .viewer { height: 65vh; }
+  .panel {
+    height: auto;
+    overflow: visible;
+    border-left: 0;
+    border-top: 1px solid #d9dee2;
+  }
 }
