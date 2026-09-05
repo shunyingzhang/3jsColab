@@ -1,0 +1,61 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: #eef1f4;
+  color: #25282b;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 390px;
+}
+
+.viewer { min-height: 100vh; }
+
+.panel {
+  padding: 24px;
+  background: #fff;
+  border-left: 1px solid #d9dee2;
+  overflow: auto;
+}
+
+.panel h1 { margin: 0 0 8px; font-size: 22px; }
+.panel p { color: #667078; line-height: 1.5; }
+.field { display: grid; gap: 6px; margin: 18px 0; }
+.field label { font-size: 13px; font-weight: 700; }
+.field input, .field select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #c9d0d5;
+  border-radius: 7px;
+}
+.two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.two-columns .field { margin: 8px 0; }
+.section { margin-top: 26px; padding-top: 20px; border-top: 1px solid #dde2e5; }
+.checkbox { display: flex; align-items: center; gap: 8px; font-weight: 700; margin: 12px 0; }
+.choice-grid, .material-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.choice, .material {
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid #d2d8dc;
+  border-radius: 8px;
+  background: #fff;
+  color: #3a4247;
+  cursor: pointer;
+}
+.choice.selected, .material.selected { border: 2px solid #ee8b25; padding: 6px; }
+.choice span:last-child, .material small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.handle-preview, .material > span { display: block; width: 100%; height: 54px; margin-bottom: 5px; background: center / contain no-repeat; }
+.material > span { background-size: cover; border-radius: 5px; }
+.summary { margin-top: 24px; padding: 12px; border-radius: 8px; background: #f3f5f6; font-size: 13px; line-height: 1.6; }
+
+@media (max-width: 800px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .viewer { min-height: 65vh; }
+  .panel { border-left: 0; border-top: 1px solid #d9dee2; }
+}
