@@ -30,7 +30,8 @@ const defaultBenchtop: BenchtopParameters = {
   cornerRadius: 20,
 };
 
-export default function BasicKitchenDemo({ materials, benchtopMaterials }: {
+export default function BasicKitchenDemo({ basePath, materials, benchtopMaterials }: {
+  basePath: string;
   materials: MaterialSelection[];
   benchtopMaterials: BenchtopMaterial[];
 }) {
@@ -152,7 +153,7 @@ export default function BasicKitchenDemo({ materials, benchtopMaterials }: {
               className={`choice ${handle.filename === option.filename ? "selected" : ""}`}
               onClick={() => setHandle((current) => ({ ...current, filename: option.filename }))}
             >
-              {option.previewFile && <span className="handle-preview" style={{ backgroundImage: `url(/handles/${encodeURIComponent(option.previewFile)})` }} />}
+              {option.previewFile && <span className="handle-preview" style={{ backgroundImage: `url(${basePath}/handles/${encodeURIComponent(option.previewFile)})` }} />}
               <span>{option.label}</span>
             </button>
           ))}

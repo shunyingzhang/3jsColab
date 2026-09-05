@@ -7,6 +7,7 @@ import type { MaterialSelection } from "@/lib/cabinet/types";
 const imagePattern = /\.(jpe?g|png|webp)$/i;
 
 export default async function Home() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const files = await readdir(path.join(process.cwd(), "public"));
   const materials: MaterialSelection[] = files
     .filter((file) => imagePattern.test(file) && file !== "PM832.jpg")
@@ -14,13 +15,14 @@ export default async function Home() {
     .map((file) => ({
       file,
       name: file.replace(imagePattern, ""),
-      textureUrl: `/${encodeURIComponent(file)}`,
+      textureUrl: `${basePath}/${encodeURIComponent(file)}`,
     }));
 
   return (
     <BasicKitchenDemo
+      basePath={basePath}
       materials={materials}
-      benchtopMaterials={createBenchtopMaterialCatalog()}
+      benchtopMaterials={createBenchtopMaterialCatalog(basePath)}
     />
   );
 }
